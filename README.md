@@ -1,6 +1,6 @@
 # Deep Bluffing: Week 1 - The Frozen Lake
 
-You will guide an agent across a frozen lake to reach a treasure. This game is called the Frozen Lake
+You will guide an agent across a frozen lake to reach a treasure. This game is called the Frozen Lake. After finishing the code, run `visualize_agent.py` to see it in action!
 
 ## TASKS
 Open `frozen_lake_agent.py`. You will find two `TODO` blocks:

@@ -17,16 +17,24 @@ def watch_trained_agent():
     # Add a slight delay before starting so the human can see the window
     time.sleep(1)
 
-    while not done:
-        # Exploit the best action from the Q-Table
-        action = np.argmax(q_table[state])
+    step_count = 0
+    max_steps = 100 # Stop after 100 moves
+
+    while not done and step_count < max_steps:
+        # Tie-breaking action selection
+        max_value = np.max(q_table[state])
+        best_actions = np.where(q_table[state] == max_value)[0]
+        action = np.random.choice(best_actions)
         
         # Take the step
         state, reward, terminated, truncated, _ = env.step(action)
         done = terminated or truncated
         
-        # Slow down the frames so the human eye can follow the elf
+        step_count += 1
         time.sleep(0.5)
+
+    if step_count >= max_steps:
+        print("The Elf wandered aimlessly and got lost.")
 
     if reward == 1.0:
         print("The Elf reached the treasure!")
